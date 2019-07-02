@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StatTracker.Models.PlayerStatModels
 {
-    class PlayerStatListItem
+    public class PlayerStatListItem
     {
         public int PlayerID { get; set; }
         public string FullName { get; set; }

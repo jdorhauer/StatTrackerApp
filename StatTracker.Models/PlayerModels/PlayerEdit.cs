@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace StatTracker.Models.PlayerModels
 {
-    class PlayerEdit
+    public class PlayerEdit
     {
         [Display(Name = "Player ID")]
         public int PlayerID { get; set; }
 
         [Display(Name = "Player Name")]
-        public string PlayerName { get; set; }
+        public string FullName { get; set; }
 
         [Display(Name = "Position")]
         public Position PlayerPosition { get; set; }

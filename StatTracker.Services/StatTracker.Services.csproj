@@ -64,5 +64,15 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\StatTracker.Data\StatTracker.Data.csproj">
+      <Project>{6DD792C8-C962-490D-8AEA-FBBC32C7A679}</Project>
+      <Name>StatTracker.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StatTracker.Models\StatTracker.Models.csproj">
+      <Project>{3B9548D3-50D5-4D98-AF2E-7D2597568146}</Project>
+      <Name>StatTracker.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

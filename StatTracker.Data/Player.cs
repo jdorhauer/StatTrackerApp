@@ -17,6 +17,9 @@ namespace StatTracker.Data
         public int PlayerID { get; set; }
 
         [Required]
+        public Guid CoachID { get; set; }
+
+        [Required]
         [Display(Name = "Player's Name")]
         public string FullName { get; set; }
 

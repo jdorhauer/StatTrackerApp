@@ -25,6 +25,11 @@ namespace StatTracker.Data
         {
         }
 
+        public DbSet<Player> Players { get; set; }
+        public DbSet<PlayerStat> PlayerStats { get; set; }
+        public DbSet<Team> Teams { get; set; }
+        public DbSet<TeamStat> TeamStats { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

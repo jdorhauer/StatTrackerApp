@@ -24,6 +24,9 @@ namespace StatTracker.Data
         [Column(Order = 2)]
         public int GameNumber { get; set; }
 
+        [Required]
+        public Guid CoachID { get; set; }
+
         public int Goals { get; set; }
         public int Assists { get; set; }
         public int Shots { get; set; }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace StatTracker.Models.PlayerModels
 {
-    class PlayerCreate
+    public class PlayerCreate
     {
         [Required]
         [Display(Name = "Player's Name")]
@@ -19,6 +19,6 @@ namespace StatTracker.Models.PlayerModels
         public Position PlayerPosition { get; set; }
 
         [Required]
-        public string Team { get; set; }
+        public int TeamID { get; set; }
     }
 }

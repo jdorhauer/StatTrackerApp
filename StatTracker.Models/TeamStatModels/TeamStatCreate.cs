@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace StatTracker.Models.TeamStatModels
 {
-    class TeamStatCreate
+    public class TeamStatCreate
     {
         [Required]
         [Display(Name = "Team Name")]

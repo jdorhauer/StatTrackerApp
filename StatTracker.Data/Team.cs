@@ -11,7 +11,13 @@ namespace StatTracker.Data
     {
         [Key]
         public int TeamID { get; set; }
+
+        [Required]
+        public Guid CoachID { get; set; }
+
         public string TeamName { get; set; }
+
+
         public string TeamDivision { get; set; }
     }
 }
