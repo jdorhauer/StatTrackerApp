@@ -18,6 +18,6 @@ namespace StatTracker.Models.PlayerModels
 
         [Display(Name = "Position")]
         public Position PlayerPosition { get; set; }
-        public string Team { get; set; }
+        public int TeamID { get; set; }
     }
 }

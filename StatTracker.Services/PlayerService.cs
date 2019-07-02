@@ -10,7 +10,6 @@ namespace StatTracker.Services
 {
     public class PlayerService
     {
-        private ApplicationDbContext _db = new ApplicationDbContext();
         private readonly Guid _userID;
 
         public PlayerService(Guid userID)
@@ -29,67 +28,82 @@ namespace StatTracker.Services
                     TeamID = model.TeamID
                 };
 
-            _db.Players.Add(player);
-            return _db.SaveChanges() == 1;
+            using (var db = new ApplicationDbContext())
+            {
+                db.Players.Add(player);
+                return db.SaveChanges() == 1;
+            }
         }
 
         public IEnumerable<PlayerListItem> GetPlayers()
         {
-            var query =
-                _db
-                    .Players
-                    .Where(e => e.CoachID == _userID)
-                    .Select(
-                        e =>
-                        new PlayerListItem
-                        {
-                            PlayerID = e.PlayerID,
-                            FullName = e.FullName,
-                            PlayerPosition = e.PlayerPosition,
-                            Team = e.Team.TeamName
-                        }
-                     );
-            return query.ToArray();
+            using (var db = new ApplicationDbContext())
+            {
+                var query =
+                    db
+                        .Players
+                        .Where(e => e.CoachID == _userID)
+                        .Select(
+                            e =>
+                            new PlayerListItem
+                            {
+                                PlayerID = e.PlayerID,
+                                FullName = e.FullName,
+                                PlayerPosition = e.PlayerPosition,
+                                TeamID = e.TeamID
+                            }
+                         );
+                return query.ToArray();
+            }
         }
 
         public PlayerDetails GetPlayerByID(int playerID)
         {
-            var entity =
-                _db
-                    .Players
-                    .Single(e => e.PlayerID == playerID && e.CoachID == _userID);
-            return new PlayerDetails
+            using (var db = new ApplicationDbContext())
             {
-                PlayerID = entity.PlayerID,
-                FullName = entity.FullName,
-                PlayerPosition = entity.PlayerPosition,
-                Team = entity.Team.TeamName
-            };
+                var entity =
+                    db
+                        .Players
+                        .Single(e => e.PlayerID == playerID && e.CoachID == _userID);
+                return new PlayerDetails
+                {
+                    PlayerID = entity.PlayerID,
+                    FullName = entity.FullName,
+                    PlayerPosition = entity.PlayerPosition,
+                    TeamID = entity.TeamID
+                };
+            }
         }
 
         public bool UpdatePlayer(PlayerEdit player)
         {
-            var entity =
-                _db
-                    .Players
-                    .Single(e => e.PlayerID == player.PlayerID && e.CoachID == _userID);
+            using (var db = new ApplicationDbContext())
+            {
+                var entity =
+                    db
+                        .Players
+                        .Single(e => e.PlayerID == player.PlayerID && e.CoachID == _userID);
 
-            entity.FullName = player.FullName;
-            entity.PlayerPosition = player.PlayerPosition;
-            entity.Team.TeamName = player.Team;
+                entity.FullName = player.FullName;
+                entity.PlayerPosition = player.PlayerPosition;
+                entity.TeamID = player.TeamID;
 
-            return _db.SaveChanges() == 1;
+                return db.SaveChanges() == 1;
+            }
         }
 
         public bool DeletePlayer(int playerID)
         {
-            var entity =
-                _db
-                    .Players
-                    .Single(e => e.PlayerID == playerID && e.CoachID == _userID);
-            _db.Players.Remove(entity);
+            using (var db = new ApplicationDbContext())
+            {
+                var entity =
+                    db
+                        .Players
+                        .Single(e => e.PlayerID == playerID && e.CoachID == _userID);
+                db.Players.Remove(entity);
 
-            return _db.SaveChanges() == 1;
+                return db.SaveChanges() == 1;
+            }
         }
     }
 }
