@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNet.Identity;
-using StatTracker.Data;
-using StatTracker.Models.PlayerModels;
+using StatTracker.Models.TeamModels;
 using StatTracker.Services;
 using System;
 using System.Collections.Generic;
@@ -10,73 +9,63 @@ using System.Web.Mvc;
 
 namespace StatTracker.Web.MVC.Controllers
 {
-    public class PlayerController : Controller
+    public class TeamController : Controller
     {
-        private ApplicationDbContext _db = new ApplicationDbContext();
-
-        // GET: Player
-        [Authorize]
+        // GET: Team
         public ActionResult Index()
         {
             var userID = Guid.Parse(User.Identity.GetUserId());
-            var service = new PlayerService(userID);
-            var model = service.GetPlayers();
+            var service = new TeamService(userID);
+            var model = service.GetTeams();
 
             return View(model);
         }
 
-        private PlayerService CreatePlayerService()
+        private TeamService CreateTeamService()
         {
             var userID = Guid.Parse(User.Identity.GetUserId());
-            var service = new PlayerService(userID);
+            var service = new TeamService(userID);
 
             return service;
         }
 
-        // GET: Player/Details
+        // GET: Team/Details/5
         public ActionResult Details(int id)
         {
-            var svc = CreatePlayerService();
-            var model = svc.GetPlayerByID(id);
-
-            return View(model);
-        }
-
-        // GET: Player/Create
-        public ActionResult Create()
-        {
-            ViewBag.TeamID = new SelectList(_db.Teams.ToList(), "TeamID", "TeamName");
-
             return View();
         }
 
-        // POST: Player/Create
+        // GET: Team/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Team/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(PlayerCreate player)
+        public ActionResult Create(TeamCreate team)
         {
-            if (!ModelState.IsValid) return View(player);
+            if (!ModelState.IsValid) return View(team);
 
-            var service = CreatePlayerService();
+            var service = CreateTeamService();
 
-            if (service.CreatePlayer(player))
+            if (service.CreateTeam(team))
             {
-                TempData["SaveResult"] = "Player was added.";
+                TempData["SaveResult"] = "Team was added.";
                 return RedirectToAction("Index");
             }
 
-            ModelState.AddModelError("", "Player could not be added.");
-
-            return View(player);
+            return View(team);
         }
 
-        // GET: Player/Edit/5
+        // GET: Team/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Player/Edit/5
+        // POST: Team/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -92,13 +81,13 @@ namespace StatTracker.Web.MVC.Controllers
             }
         }
 
-        // GET: Player/Delete/5
+        // GET: Team/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Player/Delete/5
+        // POST: Team/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
