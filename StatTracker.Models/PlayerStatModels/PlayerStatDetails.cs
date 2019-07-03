@@ -15,6 +15,9 @@ namespace StatTracker.Models.PlayerStatModels
         [Display(Name = "Player's Name")]
         public string FullName { get; set; }
 
+        [Display(Name = "Team Name")]
+        public string TeamName { get; set; }
+
         [Display(Name = "Season Year")]
         public int YearOfSeason { get; set; }
 
