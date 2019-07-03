@@ -9,6 +9,7 @@ namespace StatTracker.Models.TeamModels
 {
     public class TeamDetails
     {
+        [Display(Name = "Team ID")]
         public int TeamID { get; set; }
 
         [Display(Name = "Team Name")]

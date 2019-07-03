@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace StatTracker.Data
 {
-    public enum Position { Goalie, LeftWing, RightWing, Center, LeftDefense, RightDefense }
+    public enum Position { Goalie = 1, LeftWing, RightWing, Center, LeftDefense, RightDefense }
 
     public class Player
     {

@@ -80,6 +80,7 @@ namespace StatTracker.Web.MVC.Controllers
             var model =
                 new PlayerEdit
                 {
+                    PlayerID = detail.PlayerID,
                     FullName = detail.FullName,
                     PlayerPosition = detail.PlayerPosition,
                     TeamID = detail.TeamID

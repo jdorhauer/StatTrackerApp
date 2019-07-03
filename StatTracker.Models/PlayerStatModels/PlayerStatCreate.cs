@@ -10,8 +10,8 @@ namespace StatTracker.Models.PlayerStatModels
     public class PlayerStatCreate
     {
         [Required]
-        [Display(Name = "Player's Name")]
-        public string FullName { get; set; }
+        [Display(Name = "Player")]
+        public int PlayerID { get; set; }
 
         [Required]
         [Display(Name = "Year of Season")]

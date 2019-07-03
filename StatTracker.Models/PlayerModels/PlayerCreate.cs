@@ -16,6 +16,7 @@ namespace StatTracker.Models.PlayerModels
 
         [Required]
         [Display(Name = "Position")]
+        [Range(1, int.MaxValue, ErrorMessage = "Select a position")]
         public Position PlayerPosition { get; set; }
 
         [Display(Name = "Team")]
