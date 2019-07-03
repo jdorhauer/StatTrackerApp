@@ -18,7 +18,7 @@ namespace StatTracker.Models.PlayerModels
 
         [Display(Name = "Position")]
         public Position PlayerPosition { get; set; }
-
-        public int TeamID { get; set; }
+        [Display(Name = "Team Name")]
+        public string TeamName { get; set; }
     }
 }

@@ -53,5 +53,52 @@ namespace StatTracker.Services
                 return query.ToArray();
             }
         }
+
+        public TeamDetails GetTeamByID(int teamID)
+        {
+            using (var db = new ApplicationDbContext())
+            {
+                var entity =
+                    db
+                        .Teams
+                        .Single(e => e.TeamID == teamID && e.CoachID == _userID);
+                return new TeamDetails
+                {
+                    TeamID = entity.TeamID,
+                    TeamName = entity.TeamName,
+                    TeamDivision = entity.TeamDivision
+                };
+            }
+        }
+
+        public bool UpdateTeam(TeamEdit team)
+        {
+            using (var db = new ApplicationDbContext())
+            {
+                var entity =
+                    db
+                        .Teams
+                        .Single(e => e.TeamID == team.TeamID && e.CoachID == _userID);
+
+                entity.TeamName = team.TeamName;
+                entity.TeamDivision = team.TeamDivision;
+
+                return db.SaveChanges() == 1;
+            }
+        }
+
+        public bool DeleteTeam(int teamID)
+        {
+            using (var db = new ApplicationDbContext())
+            {
+                var entity =
+                    db
+                        .Teams
+                        .Single(e => e.TeamID == teamID && e.CoachID == _userID);
+                db.Teams.Remove(entity);
+
+                return db.SaveChanges() == 1;
+            }
+        }
     }
 }

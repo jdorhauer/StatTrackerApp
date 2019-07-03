@@ -18,6 +18,14 @@ namespace StatTracker.Models.PlayerModels
 
         [Display(Name = "Position")]
         public Position PlayerPosition { get; set; }
+
+        [Display(Name = "Team ID")]
         public int TeamID { get; set; }
+
+        [Display(Name = "Team Name")]
+        public string TeamName { get; set; }
+
+        [Display(Name = "Division")]
+        public string TeamDivision { get; set; }
     }
 }

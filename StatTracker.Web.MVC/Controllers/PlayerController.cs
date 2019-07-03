@@ -73,45 +73,68 @@ namespace StatTracker.Web.MVC.Controllers
         // GET: Player/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            ViewBag.TeamID = new SelectList(_db.Teams.ToList(), "TeamID", "TeamName");
+
+            var service = CreatePlayerService();
+            var detail = service.GetPlayerByID(id);
+            var model =
+                new PlayerEdit
+                {
+                    FullName = detail.FullName,
+                    PlayerPosition = detail.PlayerPosition,
+                    TeamID = detail.TeamID
+                };
+            return View(model);
         }
 
         // POST: Player/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, PlayerEdit player)
         {
-            try
-            {
-                // TODO: Add update logic here
+            if (!ModelState.IsValid) return View(player);
 
+            if (player.PlayerID != id)
+            {
+                ModelState.AddModelError("", "ID Mismatch");
+                return View(player);
+            }
+
+            var service = CreatePlayerService();
+
+            if (service.UpdatePlayer(player))
+            {
+                TempData["SaveResult"] = "Player info was updated.";
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+
+            ModelState.AddModelError("", "Player info could not be updated.");
+            return View(player);
         }
 
         // GET: Player/Delete/5
+        [ActionName("Delete")]
         public ActionResult Delete(int id)
         {
-            return View();
+            var service = CreatePlayerService();
+            var player = service.GetPlayerByID(id);
+
+            return View(player);
         }
 
         // POST: Player/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletePost(int id)
         {
-            try
-            {
-                // TODO: Add delete logic here
+            var service = CreatePlayerService();
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            service.DeletePlayer(id);
+
+            TempData["SaveResult"] = "Player was deleted.";
+
+            return RedirectToAction("Index");
         }
     }
 }

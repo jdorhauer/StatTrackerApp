@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Identity;
+using StatTracker.Data;
 using StatTracker.Models.TeamModels;
 using StatTracker.Services;
 using System;
@@ -12,6 +13,7 @@ namespace StatTracker.Web.MVC.Controllers
     public class TeamController : Controller
     {
         // GET: Team
+        [Authorize]
         public ActionResult Index()
         {
             var userID = Guid.Parse(User.Identity.GetUserId());
@@ -32,7 +34,10 @@ namespace StatTracker.Web.MVC.Controllers
         // GET: Team/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var service = CreateTeamService();
+            var model = service.GetTeamByID(id);
+
+            return View(model);
         }
 
         // GET: Team/Create
@@ -62,45 +67,66 @@ namespace StatTracker.Web.MVC.Controllers
         // GET: Team/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var service = CreateTeamService();
+            var detail = service.GetTeamByID(id);
+            var model =
+                new TeamEdit
+                {
+                    TeamID = detail.TeamID,
+                    TeamName = detail.TeamName,
+                    TeamDivision = detail.TeamDivision
+                };
+            return View(model);
         }
 
         // POST: Team/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, TeamEdit team)
         {
-            try
-            {
-                // TODO: Add update logic here
+            if (!ModelState.IsValid) return View(team);
 
+            if (team.TeamID != id)
+            {
+                ModelState.AddModelError("", "ID Mismatch");
+                return View(team);
+            }
+
+            var service = CreateTeamService();
+
+            if (service.UpdateTeam(team))
+            {
+                TempData["SaveResult"] = "Team was updated.";
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+
+            ModelState.AddModelError("", "Team info could not be updated.");
+            return View(team);
         }
 
         // GET: Team/Delete/5
+        [ActionName("Delete")]
         public ActionResult Delete(int id)
         {
-            return View();
+            var service = CreateTeamService();
+            var team = service.GetTeamByID(id);
+
+            return View(team);
         }
 
         // POST: Team/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletePost(int id)
         {
-            try
-            {
-                // TODO: Add delete logic here
+            var service = CreateTeamService();
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            service.DeleteTeam(id);
+
+            TempData["SaveResult"] = "Team was deleted";
+
+            return RedirectToAction("Index");
         }
     }
 }
