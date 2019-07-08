@@ -45,8 +45,11 @@ namespace StatTracker.Web.MVC.Controllers
         // GET: PlayerStat/Create
         public ActionResult Create()
         {
-            ViewBag.PlayerID = new SelectList(_db.Players.ToList(), "PlayerID", "FullName");
-            ViewBag.TeamID = new SelectList(_db.Teams.ToList(), "TeamID", "TeamName");
+            var teams = _db.Teams.ToList().Where(t => t.CoachID == Guid.Parse(User.Identity.GetUserId()));
+            var players = _db.Players.ToList().Where(t => t.CoachID == Guid.Parse(User.Identity.GetUserId()));
+
+            ViewBag.PlayerID = new SelectList(players, "PlayerID", "FullName");
+            ViewBag.TeamID = new SelectList(teams, "TeamID", "TeamName");
 
             return View();
         }
@@ -74,8 +77,11 @@ namespace StatTracker.Web.MVC.Controllers
         // GET: PlayerStat/Edit/5
         public ActionResult Edit(int id, int year, int game )
         {
-            ViewBag.PlayerID = new SelectList(_db.Players.ToList(), "PlayerID", "FullName");
-            ViewBag.TeamID = new SelectList(_db.Teams.ToList(), "TeamID", "TeamName");
+            var teams = _db.Teams.ToList().Where(t => t.CoachID == Guid.Parse(User.Identity.GetUserId()));
+            var players = _db.Players.ToList().Where(t => t.CoachID == Guid.Parse(User.Identity.GetUserId()));
+
+            ViewBag.PlayerID = new SelectList(players, "PlayerID", "FullName");
+            ViewBag.TeamID = new SelectList(teams, "TeamID", "TeamName");
 
             var service = CreatePlayerStatService();
             var detail = service.GetStatByID(id, year, game);

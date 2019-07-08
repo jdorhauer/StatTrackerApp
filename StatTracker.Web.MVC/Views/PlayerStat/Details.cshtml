@@ -1,0 +1,66 @@
+﻿@model StatTracker.Models.PlayerStatModels.PlayerStatDetails
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PlayerStat</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TeamName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TeamName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Goals)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Goals)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Assists)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Assists)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Shots)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Shots)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShootingPercentage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShootingPercentage)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PlayerID, year = Model.YearOfSeason, game = Model.GameNumber }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

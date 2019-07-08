@@ -9,6 +9,8 @@ namespace StatTracker.Models.PlayerStatModels
 {
     public class PlayerStatCreate
     {
+        public Guid CoachID { get; set; }
+
         [Required]
         [Display(Name = "Player")]
         public int PlayerID { get; set; }

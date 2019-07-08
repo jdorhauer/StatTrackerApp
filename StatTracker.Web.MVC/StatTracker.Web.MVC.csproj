@@ -248,6 +248,10 @@
     <Content Include="Views\Team\Details.cshtml" />
     <Content Include="Views\Team\Delete.cshtml" />
     <Content Include="Views\PlayerStat\Index.cshtml" />
+    <Content Include="Views\PlayerStat\Details.cshtml" />
+    <Content Include="Views\PlayerStat\Create.cshtml" />
+    <Content Include="Views\PlayerStat\Edit.cshtml" />
+    <Content Include="Views\PlayerStat\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

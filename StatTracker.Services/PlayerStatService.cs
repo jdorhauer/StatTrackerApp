@@ -22,6 +22,7 @@ namespace StatTracker.Services
             var playerStats =
                 new PlayerStat()
                 {
+                    CoachID = _userID,
                     PlayerID = stats.PlayerID,
                     YearOfSeason = stats.YearOfSeason,
                     GameNumber = stats.GameNumber,

@@ -45,7 +45,8 @@ namespace StatTracker.Web.MVC.Controllers
         // GET: Player/Create
         public ActionResult Create()
         {
-            ViewBag.TeamID = new SelectList(_db.Teams.ToList(), "TeamID", "TeamName");
+            var teams = _db.Teams.ToList().Where(t => t.CoachID == Guid.Parse(User.Identity.GetUserId()));
+            ViewBag.TeamID = new SelectList(teams, "TeamID", "TeamName");
 
             return View();
         }
@@ -73,7 +74,8 @@ namespace StatTracker.Web.MVC.Controllers
         // GET: Player/Edit/5
         public ActionResult Edit(int id)
         {
-            ViewBag.TeamID = new SelectList(_db.Teams.ToList(), "TeamID", "TeamName");
+            var teams = _db.Teams.ToList().Where(t => t.CoachID == Guid.Parse(User.Identity.GetUserId()));
+            ViewBag.TeamID = new SelectList(teams, "TeamID", "TeamName");
 
             var service = CreatePlayerService();
             var detail = service.GetPlayerByID(id);
