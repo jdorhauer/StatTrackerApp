@@ -7,13 +7,13 @@ namespace StatTracker.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class PlayerStatFix : IMigrationMetadata
+    public sealed partial class fixtoshootingPercentage : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(PlayerStatFix));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(fixtoshootingPercentage));
         
         string IMigrationMetadata.Id
         {
-            get { return "201907081337188_PlayerStat-Fix"; }
+            get { return "201907081929187_fix-to-shootingPercentage"; }
         }
         
         string IMigrationMetadata.Source

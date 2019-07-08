@@ -27,15 +27,9 @@ namespace StatTracker.Data
         [Required]
         public Guid CoachID { get; set; }
 
-        public int Goals { get; set; }
+        public double Goals { get; set; }
         public int Assists { get; set; }
-        public int Shots { get; set; }
-        public int ShootingPercentage
-        {
-            get
-            {
-                return Goals / Shots;
-            }
-        }
+        public double Shots { get; set; }
+        public double ShootingPercentage { get; set; }
     }
 }

@@ -23,17 +23,12 @@ namespace StatTracker.Models.PlayerStatModels
 
         [Display(Name = "Game Number")]
         public int GameNumber { get; set; }
-        public int Goals { get; set; }
+        public double Goals { get; set; }
         public int Assists { get; set; }
-        public int Shots { get; set; }
+        public double Shots { get; set; }
 
         [Display(Name = "Shooting Percentage")]
-        public double ShootingPercentage
-        {
-            get
-            {
-                return Goals / Shots;
-            }
-        }
+        [DisplayFormat(DataFormatString = "{0:P2}")]
+        public double ShootingPercentage { get; set; }
     }
 }

@@ -57,7 +57,8 @@ namespace StatTracker.Services
                                 GameNumber = e.GameNumber,
                                 Goals = e.Goals,
                                 Assists = e.Assists,
-                                Shots = e.Shots
+                                Shots = e.Shots,
+                                ShootingPercentage = e.Goals / e.Shots
                             }
                         );
 
@@ -82,7 +83,8 @@ namespace StatTracker.Services
                     GameNumber = entity.GameNumber,
                     Goals = entity.Goals,
                     Assists = entity.Assists,
-                    Shots = entity.Shots
+                    Shots = entity.Shots,
+                    ShootingPercentage = entity.Goals / entity.Shots
                 };
             }
         }

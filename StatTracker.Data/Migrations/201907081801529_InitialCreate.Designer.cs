@@ -13,7 +13,7 @@ namespace StatTracker.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201907032005240_InitialCreate"; }
+            get { return "201907081801529_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

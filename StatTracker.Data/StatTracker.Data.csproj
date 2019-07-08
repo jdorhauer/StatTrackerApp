@@ -55,13 +55,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\201907032005240_InitialCreate.cs" />
-    <Compile Include="Migrations\201907032005240_InitialCreate.Designer.cs">
-      <DependentUpon>201907032005240_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201907081801529_InitialCreate.cs" />
+    <Compile Include="Migrations\201907081801529_InitialCreate.Designer.cs">
+      <DependentUpon>201907081801529_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201907081337188_PlayerStat-Fix.cs" />
-    <Compile Include="Migrations\201907081337188_PlayerStat-Fix.Designer.cs">
-      <DependentUpon>201907081337188_PlayerStat-Fix.cs</DependentUpon>
+    <Compile Include="Migrations\201907081929187_fix-to-shootingPercentage.cs" />
+    <Compile Include="Migrations\201907081929187_fix-to-shootingPercentage.Designer.cs">
+      <DependentUpon>201907081929187_fix-to-shootingPercentage.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Player.cs" />
@@ -75,11 +75,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201907032005240_InitialCreate.resx">
-      <DependentUpon>201907032005240_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201907081801529_InitialCreate.resx">
+      <DependentUpon>201907081801529_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907081337188_PlayerStat-Fix.resx">
-      <DependentUpon>201907081337188_PlayerStat-Fix.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201907081929187_fix-to-shootingPercentage.resx">
+      <DependentUpon>201907081929187_fix-to-shootingPercentage.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -20,8 +20,8 @@ namespace StatTracker.Models.PlayerStatModels
         [Display(Name = "Game Number")]
         public int GameNumber { get; set; }
 
-        public int Goals { get; set; }
+        public double Goals { get; set; }
         public int Assists { get; set; }
-        public int Shots { get; set; }
+        public double Shots { get; set; }
     }
 }

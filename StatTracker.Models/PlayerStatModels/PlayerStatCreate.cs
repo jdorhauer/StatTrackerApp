@@ -24,12 +24,12 @@ namespace StatTracker.Models.PlayerStatModels
         public int GameNumber { get; set; }
 
         [Required]
-        public int Goals { get; set; }
+        public double Goals { get; set; }
 
         [Required]
         public int Assists { get; set; }
 
         [Required]
-        public int Shots { get; set; }
+        public double Shots { get; set; }
     }
 }

@@ -40,9 +40,9 @@ namespace StatTracker.Data.Migrations
                         YearOfSeason = c.Int(nullable: false),
                         GameNumber = c.Int(nullable: false),
                         CoachID = c.Guid(nullable: false),
-                        Goals = c.Int(nullable: false),
+                        Goals = c.Decimal(nullable: false, precision: 18, scale: 2),
                         Assists = c.Int(nullable: false),
-                        Shots = c.Int(nullable: false),
+                        Shots = c.Decimal(nullable: false, precision: 18, scale: 2),
                     })
                 .PrimaryKey(t => new { t.PlayerID, t.YearOfSeason, t.GameNumber })
                 .ForeignKey("dbo.Player", t => t.PlayerID, cascadeDelete: true)
