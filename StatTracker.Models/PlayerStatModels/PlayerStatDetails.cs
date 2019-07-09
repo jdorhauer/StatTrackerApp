@@ -29,6 +29,16 @@ namespace StatTracker.Models.PlayerStatModels
 
         [Display(Name = "Shooting Percentage")]
         [DisplayFormat(DataFormatString = "{0:P2}")]
-        public double ShootingPercentage { get; set; }
+        public double ShootingPercentage
+        {
+            get
+            {
+                if (Shots != 0)
+                {
+                    return Goals / Shots;
+                }
+                return 0;
+            }
+        }
     }
 }

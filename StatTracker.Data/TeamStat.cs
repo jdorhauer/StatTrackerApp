@@ -33,5 +33,6 @@ namespace StatTracker.Data
         public int PenaltyKillGoalsAgainst { get; set; }
         public int GoalsFor { get; set; }
         public int GoalsAgainst { get; set; }
+        public bool Win { get; set; }
     }
 }

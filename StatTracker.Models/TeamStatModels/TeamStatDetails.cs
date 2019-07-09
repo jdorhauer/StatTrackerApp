@@ -9,8 +9,10 @@ namespace StatTracker.Models.TeamStatModels
 {
     public class TeamStatDetails
     {
-        [Display(Name = "Team ID")]
         public int TeamID { get; set; }
+
+        [Display(Name = "Team")]
+        public string TeamName { get; set; }
 
         [Display(Name = "Season Year")]
         public int YearOfSeason { get; set; }
@@ -37,7 +39,7 @@ namespace StatTracker.Models.TeamStatModels
         public int GoalsAgainst { get; set; }
 
         [Display(Name = "Won Game?")]
-        public bool WonGame
+        public bool Win
         {
             get
             {

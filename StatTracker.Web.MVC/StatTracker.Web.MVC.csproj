@@ -173,6 +173,7 @@
     <Compile Include="Controllers\PlayerController.cs" />
     <Compile Include="Controllers\PlayerStatController.cs" />
     <Compile Include="Controllers\TeamController.cs" />
+    <Compile Include="Controllers\TeamStatController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -252,6 +253,11 @@
     <Content Include="Views\PlayerStat\Create.cshtml" />
     <Content Include="Views\PlayerStat\Edit.cshtml" />
     <Content Include="Views\PlayerStat\Delete.cshtml" />
+    <Content Include="Views\TeamStat\Create.cshtml" />
+    <Content Include="Views\TeamStat\Details.cshtml" />
+    <Content Include="Views\TeamStat\Edit.cshtml" />
+    <Content Include="Views\TeamStat\Delete.cshtml" />
+    <Content Include="Views\TeamStat\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

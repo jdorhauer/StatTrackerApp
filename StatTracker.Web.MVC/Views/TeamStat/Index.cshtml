@@ -1,0 +1,87 @@
+﻿@model IEnumerable<StatTracker.Models.TeamStatModels.TeamStatListItem>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TeamName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.YearOfSeason)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GameNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Win)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PowerPlays)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PowerPlayGoals)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PenaltyKills)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PenaltyKillGoalsAgainst)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GoalsFor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GoalsAgainst)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TeamName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.YearOfSeason)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GameNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Win)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PowerPlays)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PowerPlayGoals)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PenaltyKills)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PenaltyKillGoalsAgainst)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GoalsFor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GoalsAgainst)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.TeamID, year = item.YearOfSeason, game = item.GameNumber }) |
+            @Html.ActionLink("Details", "Details", new { id = item.TeamID, year = item.YearOfSeason, game = item.GameNumber }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.TeamID, year = item.YearOfSeason, game = item.GameNumber })
+        </td>
+    </tr>
+}
+
+</table>

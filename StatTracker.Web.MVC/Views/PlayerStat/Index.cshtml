@@ -27,6 +27,12 @@
             @Html.DisplayNameFor(model => model.TeamName)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.YearOfSeason)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GameNumber)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.FullName)
         </th>
         <th>
@@ -48,6 +54,12 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.TeamName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.YearOfSeason)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GameNumber)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FullName)

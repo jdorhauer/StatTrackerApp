@@ -20,7 +20,7 @@ namespace StatTracker.Web.MVC.Controllers
         {
             var userID = Guid.Parse(User.Identity.GetUserId());
             var service = new PlayerService(userID);
-            var model = service.GetPlayers();
+            var model = service.GetPlayers().OrderBy(a => a.TeamName);
 
             return View(model);
         }

@@ -1,0 +1,81 @@
+﻿@model StatTracker.Models.TeamStatModels.TeamStatDetails
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TeamStat</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TeamName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TeamName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PowerPlays)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PowerPlays)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PowerPlayGoals)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PowerPlayGoals)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PenaltyKills)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PenaltyKills)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PenaltyKillGoalsAgainst)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PenaltyKillGoalsAgainst)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GoalsFor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GoalsFor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GoalsAgainst)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GoalsAgainst)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Win)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Win)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TeamID, year = Model.YearOfSeason, game = Model.GameNumber }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

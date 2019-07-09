@@ -9,7 +9,9 @@ namespace StatTracker.Models.TeamStatModels
 {
     public class TeamStatEdit
     {
-        [Display(Name = "Team Name")]
+        public int TeamID { get; set; }
+
+        [Display(Name = "Team")]
         public string TeamName { get; set; }
 
         [Display(Name = "Season Year")]
