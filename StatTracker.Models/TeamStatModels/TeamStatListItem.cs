@@ -14,10 +14,10 @@ namespace StatTracker.Models.TeamStatModels
         [Display(Name = "Team")]
         public string TeamName { get; set; }
 
-        [Display(Name = "Season Year")]
+        [Display(Name = "Season")]
         public int YearOfSeason { get; set; }
 
-        [Display(Name = "Game Number")]
+        [Display(Name = "Game #")]
         public int GameNumber { get; set; }
 
         [Display(Name = "Power Plays")]
@@ -29,7 +29,7 @@ namespace StatTracker.Models.TeamStatModels
         [Display(Name = "Penalty Kills")]
         public int PenaltyKills { get; set; }
 
-        [Display(Name = "Goals Against on PK")]
+        [Display(Name = "GA on PK")]
         public int PenaltyKillGoalsAgainst { get; set; }
 
         [Display(Name = "Goals For")]
