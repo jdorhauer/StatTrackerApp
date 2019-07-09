@@ -20,7 +20,7 @@ namespace StatTracker.Web.MVC.Controllers
         {
             var userID = Guid.Parse(User.Identity.GetUserId());
             var service = new PlayerStatService(userID);
-            var model = service.GetStats().OrderBy(p=>p.PlayerID).ThenBy(p=>p.TeamName).ThenBy(p=>p.YearOfSeason).ThenBy(p=>p.GameNumber);
+            var model = service.GetStats().OrderBy(t => t.TeamName).ThenBy(p => p.PlayerID).ThenBy(p => p.TeamName).ThenBy(p => p.YearOfSeason).ThenBy(p => p.GameNumber);
 
             return View(model);
         }
@@ -75,7 +75,7 @@ namespace StatTracker.Web.MVC.Controllers
         }
 
         // GET: PlayerStat/Edit/5
-        public ActionResult Edit(int id, int year, int game )
+        public ActionResult Edit(int id, int year, int game)
         {
             var teams = _db.Teams.ToList().Where(t => t.CoachID == Guid.Parse(User.Identity.GetUserId()));
             var players = _db.Players.ToList().Where(t => t.CoachID == Guid.Parse(User.Identity.GetUserId()));

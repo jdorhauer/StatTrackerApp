@@ -19,7 +19,7 @@ namespace StatTracker.Web.MVC.Controllers
         {
             var userID = Guid.Parse(User.Identity.GetUserId());
             var service = new TeamStatService(userID);
-            var model = service.GetTeamStats().OrderBy(t=>t.TeamID).ThenBy(t=>t.YearOfSeason).ThenBy(t=>t.GameNumber);
+            var model = service.GetTeamStats().OrderBy(t => t.TeamID).ThenBy(t => t.YearOfSeason).ThenBy(t => t.GameNumber);
 
             return View(model);
         }
