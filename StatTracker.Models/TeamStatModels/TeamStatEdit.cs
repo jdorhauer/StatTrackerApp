@@ -29,7 +29,7 @@ namespace StatTracker.Models.TeamStatModels
         [Display(Name = "Penalty Kills")]
         public int PenaltyKills { get; set; }
 
-        [Display(Name = "Goals Against on Penalty Kill")]
+        [Display(Name = "Goals Against on PK")]
         public int PenaltyKillGoalsAgainst { get; set; }
 
         [Display(Name = "Goals For")]

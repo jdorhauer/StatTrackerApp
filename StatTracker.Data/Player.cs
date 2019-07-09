@@ -13,7 +13,7 @@ namespace StatTracker.Data
     public class Player
     {
         [Key]
-        [Display(Name = "Player ID")]
+        [Display(Name = "Player")]
         public int PlayerID { get; set; }
 
         [Required]
@@ -28,6 +28,7 @@ namespace StatTracker.Data
         public Position PlayerPosition { get; set; }
 
         [ForeignKey(nameof(Team))]
+        [Display(Name = "Team")]
         public int TeamID { get; set; }
         public virtual Team Team { get; set; }
     }

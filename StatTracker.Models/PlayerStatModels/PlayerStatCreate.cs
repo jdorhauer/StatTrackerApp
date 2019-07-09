@@ -16,7 +16,7 @@ namespace StatTracker.Models.PlayerStatModels
         public int PlayerID { get; set; }
 
         [Required]
-        [Display(Name = "Year of Season")]
+        [Display(Name = "Season Year")]
         public int YearOfSeason { get; set; }
 
         [Required]

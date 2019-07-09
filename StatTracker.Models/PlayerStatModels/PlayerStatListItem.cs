@@ -27,7 +27,7 @@ namespace StatTracker.Models.PlayerStatModels
         public int Assists { get; set; }
         public double Shots { get; set; }
 
-        [Display(Name = "Shooting Percentage")]
+        [Display(Name = "Shooting %")]
         [DisplayFormat(DataFormatString = "{0:P2}")]
         public double ShootingPercentage
         {

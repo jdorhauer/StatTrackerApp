@@ -13,6 +13,7 @@ namespace StatTracker.Data
         [Key]
         [Column(Order = 0)]
         [ForeignKey(nameof(Player))]
+        [Display(Name = "Player")]
         public int PlayerID { get; set; }
         public virtual Player Player { get; set; }
 
