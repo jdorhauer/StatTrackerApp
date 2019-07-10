@@ -14,11 +14,34 @@ namespace StatTracker.Web.MVC.Controllers
     {
         private ApplicationDbContext _db = new ApplicationDbContext();
 
+        [ActionName("TeamSelect")]
+        public ActionResult TeamSelect()
+        {
+            var teams = _db.Teams.ToList().Where(t => t.CoachID == Guid.Parse(User.Identity.GetUserId()));
+
+            ViewBag.TeamID = new SelectList(teams, "TeamID", "TeamName");
+
+            var teamsStats = _db.TeamStats.ToList().Where(t => t.CoachID == Guid.Parse(User.Identity.GetUserId()));
+
+            ViewBag.YearOfSeason = new SelectList(teamsStats, "YearOfSeason", "YearOfSeason");
+
+            return View();
+        }
+
+        [HttpPost]
+        [ActionName("TeamSelect")]
+        [ValidateAntiForgeryToken]
+        public ActionResult SelectATeam(TeamSelect team)
+        {
+            var service = CreateTeamStatService();
+            var model = service.SelectTeam(team).OrderBy(t => t.GameNumber);
+            return View(model);
+        }
+
         // GET: TeamStat
         public ActionResult Index()
         {
-            var userID = Guid.Parse(User.Identity.GetUserId());
-            var service = new TeamStatService(userID);
+            var service = CreateTeamStatService();
             var model = service.GetTeamStats().OrderBy(t => t.TeamID).ThenBy(t => t.YearOfSeason).ThenBy(t => t.GameNumber);
 
             return View(model);

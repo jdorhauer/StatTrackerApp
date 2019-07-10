@@ -67,6 +67,7 @@
     <Compile Include="TeamModels\TeamDetails.cs" />
     <Compile Include="TeamModels\TeamEdit.cs" />
     <Compile Include="TeamModels\TeamListItem.cs" />
+    <Compile Include="TeamStatModels\TeamSelect.cs" />
     <Compile Include="TeamStatModels\TeamStatCreate.cs" />
     <Compile Include="TeamStatModels\TeamStatDetails.cs" />
     <Compile Include="TeamStatModels\TeamStatEdit.cs" />

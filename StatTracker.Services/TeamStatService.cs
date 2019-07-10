@@ -17,6 +17,34 @@ namespace StatTracker.Services
             _userID = userID;
         }
 
+        public IEnumerable<TeamStatListItem> SelectTeam(TeamSelect teamSelect)
+        {
+            using (var db = new ApplicationDbContext())
+            {
+                var query =
+                    db
+                        .TeamStats
+                        .Where(e => e.CoachID == _userID && e.TeamID == teamSelect.TeamID && e.YearOfSeason == teamSelect.YearOfSeason)
+                        .Select(
+                            e =>
+                            new TeamStatListItem
+                            {
+                                TeamID = e.TeamID,
+                                TeamName = e.Team.TeamName,
+                                YearOfSeason = e.YearOfSeason,
+                                GameNumber = e.GameNumber,
+                                PowerPlays = e.PowerPlays,
+                                PowerPlayGoals = e.PowerPlayGoals,
+                                PenaltyKills = e.PenaltyKills,
+                                PenaltyKillGoalsAgainst = e.PenaltyKillGoalsAgainst,
+                                GoalsFor = e.GoalsFor,
+                                GoalsAgainst = e.GoalsAgainst
+                            }
+                        );
+                return query.ToArray();
+            }
+        }
+
         public bool CreateTeamStats(TeamStatCreate stats)
         {
             var TeamStats =

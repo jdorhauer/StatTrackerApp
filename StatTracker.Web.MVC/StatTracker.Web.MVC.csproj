@@ -258,6 +258,7 @@
     <Content Include="Views\TeamStat\Edit.cshtml" />
     <Content Include="Views\TeamStat\Delete.cshtml" />
     <Content Include="Views\TeamStat\Index.cshtml" />
+    <Content Include="Views\TeamStat\TeamSelect.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
