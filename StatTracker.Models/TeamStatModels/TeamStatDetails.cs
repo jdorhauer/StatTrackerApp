@@ -21,16 +21,16 @@ namespace StatTracker.Models.TeamStatModels
         public int GameNumber { get; set; }
 
         [Display(Name = "Power Plays")]
-        public int PowerPlays { get; set; }
+        public double PowerPlays { get; set; }
 
         [Display(Name = "Power Play Goals")]
-        public int PowerPlayGoals { get; set; }
+        public double PowerPlayGoals { get; set; }
 
         [Display(Name = "Penalty Kills")]
-        public int PenaltyKills { get; set; }
+        public double PenaltyKills { get; set; }
 
         [Display(Name = "Goals Against on PK")]
-        public int PenaltyKillGoalsAgainst { get; set; }
+        public double PenaltyKillGoalsAgainst { get; set; }
 
         [Display(Name = "Goals For")]
         public int GoalsFor { get; set; }

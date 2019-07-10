@@ -28,10 +28,12 @@ namespace StatTracker.Data
         [Required]
         public Guid CoachID { get; set; }
 
-        public int PowerPlays { get; set; }
-        public int PowerPlayGoals { get; set; }
-        public int PenaltyKills { get; set; }
-        public int PenaltyKillGoalsAgainst { get; set; }
+        public double PowerPlays { get; set; }
+        public double PowerPlayGoals { get; set; }
+        public double PowerPlayPercentage { get; set; }
+        public double PenaltyKills { get; set; }
+        public double PenaltyKillGoalsAgainst { get; set; }
+        public double PenaltyKillPercentage { get; set; }
         public int GoalsFor { get; set; }
         public int GoalsAgainst { get; set; }
         public bool Win { get; set; }
