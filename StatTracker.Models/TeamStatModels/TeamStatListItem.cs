@@ -26,11 +26,39 @@ namespace StatTracker.Models.TeamStatModels
         [Display(Name = "Power Play Goals")]
         public double PowerPlayGoals { get; set; }
 
+        [Display(Name = "Power Play %")]
+        [DisplayFormat(DataFormatString = "{0:P2}")]
+        public double PowerPlayPercentage
+        {
+            get
+            {
+                if (PowerPlays != 0)
+                {
+                    return PowerPlayGoals / PowerPlays;
+                }
+                return 0;
+            }
+        }
+
         [Display(Name = "Penalty Kills")]
         public double PenaltyKills { get; set; }
 
         [Display(Name = "GA on PK")]
         public double PenaltyKillGoalsAgainst { get; set; }
+
+        [Display(Name = "PK %")]
+        [DisplayFormat(DataFormatString = "{0:P2}")]
+        public double PenaltyKillPercentage
+        {
+            get
+            {
+                if (PenaltyKills != 0)
+                {
+                    return (PenaltyKills - PenaltyKillGoalsAgainst) / PenaltyKills;
+                }
+                return 0;
+            }
+        }
 
         [Display(Name = "Goals For")]
         public int GoalsFor { get; set; }
