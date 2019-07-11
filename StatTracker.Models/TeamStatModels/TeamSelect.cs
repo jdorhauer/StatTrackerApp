@@ -8,8 +8,8 @@ namespace StatTracker.Models.TeamStatModels
 {
     public class TeamSelect
     {
-        public int TeamID { get; set; }
+        public int? TeamID { get; set; }
 
-        public int YearOfSeason { get; set; }
+        public int? YearOfSeason { get; set; }
     }
 }

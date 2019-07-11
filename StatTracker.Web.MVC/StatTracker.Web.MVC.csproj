@@ -49,6 +49,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -258,7 +259,6 @@
     <Content Include="Views\TeamStat\Edit.cshtml" />
     <Content Include="Views\TeamStat\Delete.cshtml" />
     <Content Include="Views\TeamStat\Index.cshtml" />
-    <Content Include="Views\TeamStat\TeamSelect.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

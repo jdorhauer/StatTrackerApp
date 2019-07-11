@@ -5,7 +5,16 @@
 }
 
 <h2>Index</h2>
+<p>
+    @using (Html.BeginForm("Index", "TeamStat", FormMethod.Get))
+    {
+        <b>Search Team: </b>
+        @Html.DropDownList("TeamID", null, string.Empty, htmlAttributes: new { @class = "form-control" }) <br />
 
+        <b>Search Season: </b> <br />
+        @Html.TextBox("YearOfSeason") <br /> <br /> <input type="submit" value="Search" /><br /> <br />
+    }
+</p>
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -50,50 +59,51 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TeamName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.YearOfSeason)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GameNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Win)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PowerPlays)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PowerPlayGoals)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PowerPlayPercentage)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PenaltyKills)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PenaltyKillGoalsAgainst)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PenaltyKillPercentage)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GoalsFor)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GoalsAgainst)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.TeamID, year = item.YearOfSeason, game = item.GameNumber }) |
-            @Html.ActionLink("Details", "Details", new { id = item.TeamID, year = item.YearOfSeason, game = item.GameNumber }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.TeamID, year = item.YearOfSeason, game = item.GameNumber })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TeamName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.YearOfSeason)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GameNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Win)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PowerPlays)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PowerPlayGoals)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PowerPlayPercentage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PenaltyKills)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PenaltyKillGoalsAgainst)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PenaltyKillPercentage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GoalsFor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GoalsAgainst)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.TeamID, year = item.YearOfSeason, game = item.GameNumber }) |
+                @Html.ActionLink("Details", "Details", new { id = item.TeamID, year = item.YearOfSeason, game = item.GameNumber }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.TeamID, year = item.YearOfSeason, game = item.GameNumber })
+            </td>
+        </tr>
+    }
 
 </table>

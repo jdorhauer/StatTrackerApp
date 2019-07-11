@@ -14,37 +14,35 @@ namespace StatTracker.Web.MVC.Controllers
     {
         private ApplicationDbContext _db = new ApplicationDbContext();
 
-        [ActionName("TeamSelect")]
-        public ActionResult TeamSelect()
+        // GET: TeamStat
+        public ActionResult Index(TeamSelect team)
         {
             var teams = _db.Teams.ToList().Where(t => t.CoachID == Guid.Parse(User.Identity.GetUserId()));
 
             ViewBag.TeamID = new SelectList(teams, "TeamID", "TeamName");
 
-            var teamsStats = _db.TeamStats.ToList().Where(t => t.CoachID == Guid.Parse(User.Identity.GetUserId()));
-
-            ViewBag.YearOfSeason = new SelectList(teamsStats, "YearOfSeason", "YearOfSeason");
-
-            return View();
-        }
-
-        [HttpPost]
-        [ActionName("TeamSelect")]
-        [ValidateAntiForgeryToken]
-        public ActionResult SelectATeam(TeamSelect team)
-        {
             var service = CreateTeamStatService();
-            var model = service.SelectTeam(team).OrderBy(t => t.GameNumber);
-            return View(model);
-        }
+            if (team.TeamID == null && team.YearOfSeason == null)
+            {
+                var model = service.GetTeamStats().OrderBy(t => t.TeamID).ThenBy(t => t.YearOfSeason).ThenBy(t => t.GameNumber);
+                return View(model);
+            }
+            else if (team.TeamID != null && team.YearOfSeason == null)
+            {
+                var model = service.SelectTeam(team).OrderBy(t => t.YearOfSeason).ThenBy(t => t.GameNumber);
+                return View(model);
+            }
+            else if (team.TeamID == null && team.YearOfSeason != null)
+            {
+                var model = service.SelectSeason(team).OrderBy(t => t.TeamID).ThenBy(t => t.GameNumber);
+                return View(model);
+            }
+            else
+            {
+                var model = service.SelectTeamAndYear(team).OrderBy(t => t.GameNumber);
+                return View(model);
+            }
 
-        // GET: TeamStat
-        public ActionResult Index()
-        {
-            var service = CreateTeamStatService();
-            var model = service.GetTeamStats().OrderBy(t => t.TeamID).ThenBy(t => t.YearOfSeason).ThenBy(t => t.GameNumber);
-
-            return View(model);
         }
 
         private TeamStatService CreateTeamStatService()
