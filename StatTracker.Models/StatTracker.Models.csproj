@@ -58,6 +58,7 @@
     <Compile Include="PlayerModels\PlayerDetails.cs" />
     <Compile Include="PlayerModels\PlayerEdit.cs" />
     <Compile Include="PlayerModels\PlayerListItem.cs" />
+    <Compile Include="PlayerModels\PlayerSelect.cs" />
     <Compile Include="PlayerStatModels\PlayerStatCreate.cs" />
     <Compile Include="PlayerStatModels\PlayerStatDetails.cs" />
     <Compile Include="PlayerStatModels\PlayerStatEdit.cs" />

@@ -16,13 +16,23 @@ namespace StatTracker.Web.MVC.Controllers
 
         // GET: Player
         [Authorize]
-        public ActionResult Index()
+        public ActionResult Index(PlayerSelect player)
         {
-            var userID = Guid.Parse(User.Identity.GetUserId());
-            var service = new PlayerService(userID);
-            var model = service.GetPlayers().OrderBy(a => a.TeamName);
+            var teams = _db.Teams.ToList().Where(t => t.CoachID == Guid.Parse(User.Identity.GetUserId()));
 
-            return View(model);
+            ViewBag.TeamID = new SelectList(teams, "TeamID", "TeamName");
+
+            var service = CreatePlayerService();
+            if (player.TeamID == null)
+            {
+                var model = service.GetPlayers().OrderBy(t => t.TeamName).ThenBy(p => p.PlayerID);
+                return View(model);
+            }
+            else
+            {
+                var model = service.GetPlayerByTeam(player);
+                return View(model);
+            }
         }
 
         private PlayerService CreatePlayerService()

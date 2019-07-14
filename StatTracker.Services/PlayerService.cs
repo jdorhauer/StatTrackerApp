@@ -18,6 +18,27 @@ namespace StatTracker.Services
             _userID = userID;
         }
 
+        public IEnumerable<PlayerListItem> GetPlayerByTeam(PlayerSelect playerSelect)
+        {
+            using (var db = new ApplicationDbContext())
+            {
+                var query =
+                    db
+                        .Players
+                        .Where(e => e.CoachID == _userID && e.TeamID == playerSelect.TeamID)
+                        .Select(
+                            e =>
+                            new PlayerListItem
+                            {
+                                TeamName = e.Team.TeamName,
+                                PlayerID = e.PlayerID,
+                                PlayerPosition = e.PlayerPosition,
+                                FullName = e.FullName
+                            }
+                        );
+                return query.ToArray();
+            }
+        }
 
         // Create a new player on the table
         public bool CreatePlayer(PlayerCreate model)
