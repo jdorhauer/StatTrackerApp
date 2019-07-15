@@ -7,6 +7,17 @@
 <h2>Index</h2>
 
 <p>
+    @using (Html.BeginForm("Index", "PlayerStat", FormMethod.Get))
+    {
+        <b>Choose Player: </b>
+        @Html.DropDownList("PlayerID", null, string.Empty, htmlAttributes: new { @class = "form-control" }) <br />
+
+        <b>Search Season: </b> <br />
+        @Html.TextBox("YearOfSeason") <br /> <br /> <input type="submit" value="Search" /><br /> <br />
+    }
+</p>
+
+<p>
     @Html.ActionLink("Create New", "Create")
 </p>
 
@@ -27,13 +38,13 @@
             @Html.DisplayNameFor(model => model.TeamName)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.FullName)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.YearOfSeason)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.GameNumber)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FullName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Goals)
@@ -56,13 +67,13 @@
                 @Html.DisplayFor(modelItem => item.TeamName)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.YearOfSeason)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.GameNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FullName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Goals)

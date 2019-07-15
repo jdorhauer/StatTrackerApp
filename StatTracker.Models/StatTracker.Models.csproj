@@ -63,6 +63,7 @@
     <Compile Include="PlayerStatModels\PlayerStatDetails.cs" />
     <Compile Include="PlayerStatModels\PlayerStatEdit.cs" />
     <Compile Include="PlayerStatModels\PlayerStatListItem.cs" />
+    <Compile Include="PlayerStatModels\PlayerStatSelect.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TeamModels\TeamCreate.cs" />
     <Compile Include="TeamModels\TeamDetails.cs" />

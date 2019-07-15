@@ -17,6 +17,84 @@ namespace StatTracker.Services
             _userID = userID;
         }
 
+        public IEnumerable<PlayerStatListItem> SelectPlayerAndYear(PlayerStatSelect playerStatSelect)
+        {
+            using (var db = new ApplicationDbContext())
+            {
+                var query =
+                    db
+                        .PlayerStats
+                        .Where(e => e.CoachID == _userID && e.PlayerID == playerStatSelect.PlayerID && e.YearOfSeason == playerStatSelect.YearOfSeason)
+                        .Select(
+                            e =>
+                            new PlayerStatListItem
+                            {
+                                PlayerID = e.PlayerID,
+                                FullName = e.Player.FullName,
+                                YearOfSeason = e.YearOfSeason,
+                                GameNumber = e.GameNumber,
+                                TeamName = e.Player.Team.TeamName,
+                                Goals = e.Goals,
+                                Assists = e.Assists,
+                                Shots = e.Shots
+                            }
+                        );
+                return query.ToArray();
+            }
+        }
+
+        public IEnumerable<PlayerStatListItem> SelectSeason(PlayerStatSelect playerStatSelect)
+        {
+            using (var db = new ApplicationDbContext())
+            {
+                var query =
+                    db
+                        .PlayerStats
+                        .Where(e => e.CoachID == _userID && e.YearOfSeason == playerStatSelect.YearOfSeason)
+                        .Select(
+                            e =>
+                            new PlayerStatListItem
+                            {
+                                PlayerID = e.PlayerID,
+                                FullName = e.Player.FullName,
+                                YearOfSeason = e.YearOfSeason,
+                                GameNumber = e.GameNumber,
+                                TeamName = e.Player.Team.TeamName,
+                                Goals = e.Goals,
+                                Assists = e.Assists,
+                                Shots = e.Shots
+                            }
+                        );
+                return query.ToArray();
+            }
+        }
+
+        public IEnumerable<PlayerStatListItem> SelectPlayer(PlayerStatSelect playerStatSelect)
+        {
+            using (var db = new ApplicationDbContext())
+            {
+                var query =
+                    db
+                        .PlayerStats
+                        .Where(e => e.CoachID == _userID && e.PlayerID == playerStatSelect.PlayerID)
+                        .Select(
+                            e =>
+                            new PlayerStatListItem
+                            {
+                                PlayerID = e.PlayerID,
+                                FullName = e.Player.FullName,
+                                YearOfSeason = e.YearOfSeason,
+                                GameNumber = e.GameNumber,
+                                TeamName = e.Player.Team.TeamName,
+                                Goals = e.Goals,
+                                Assists = e.Assists,
+                                Shots = e.Shots
+                            }
+                        );
+                return query.ToArray();
+            }
+        }
+
         public bool CreatePlayerStats(PlayerStatCreate stats)
         {
             var playerStats =

@@ -16,13 +16,33 @@ namespace StatTracker.Web.MVC.Controllers
 
         // GET: PlayerStat
         [Authorize]
-        public ActionResult Index()
+        public ActionResult Index(PlayerStatSelect player)
         {
-            var userID = Guid.Parse(User.Identity.GetUserId());
-            var service = new PlayerStatService(userID);
-            var model = service.GetStats().OrderBy(t => t.TeamName).ThenBy(p => p.PlayerID).ThenBy(p => p.TeamName).ThenBy(p => p.YearOfSeason).ThenBy(p => p.GameNumber);
+            var players = _db.Players.ToList().Where(t => t.CoachID == Guid.Parse(User.Identity.GetUserId()));
 
-            return View(model);
+            ViewBag.PlayerID = new SelectList(players, "PlayerID", "FullName");
+
+            var service = CreatePlayerStatService();
+            if (player.PlayerID == null && player.YearOfSeason == null)
+            {
+                var model = service.GetStats().OrderBy(t => t.TeamName).ThenBy(t => t.PlayerID).ThenBy(t => t.YearOfSeason).ThenBy(t => t.GameNumber);
+                return View(model);
+            }
+            else if (player.PlayerID != null && player.YearOfSeason == null)
+            {
+                var model = service.SelectPlayer(player).OrderBy(p => p.YearOfSeason).ThenBy(p => p.GameNumber);
+                return View(model);
+            }
+            else if (player.PlayerID == null && player.YearOfSeason != null)
+            {
+                var model = service.SelectSeason(player).OrderBy(p => p.TeamName).ThenBy(p => p.PlayerID).ThenBy(p => p.GameNumber);
+                return View(model);
+            }
+            else
+            {
+                var model = service.SelectPlayerAndYear(player).OrderBy(p => p.GameNumber);
+                return View(model);
+            }
         }
 
         private PlayerStatService CreatePlayerStatService()
