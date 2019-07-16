@@ -19,6 +19,22 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.YearOfSeason)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YearOfSeason)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GameNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GameNumber)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.PowerPlays)
         </dt>
 
@@ -93,5 +109,6 @@
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.TeamID, year = Model.YearOfSeason, game = Model.GameNumber }) |
+    @Html.ActionLink("Delete", "Delete", new { id = Model.TeamID, year = Model.YearOfSeason, game = Model.GameNumber }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

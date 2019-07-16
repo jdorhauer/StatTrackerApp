@@ -62,5 +62,6 @@
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.PlayerID, year = Model.YearOfSeason, game = Model.GameNumber }) |
+    @Html.ActionLink("Delete", "Delete", new { id = Model.PlayerID, year = Model.YearOfSeason, game = Model.GameNumber }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

@@ -24,6 +24,9 @@
 <table class="table">
     <tr>
         <th>
+            Team Details
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.TeamName)
         </th>
         <th>
@@ -36,15 +39,13 @@
     {
         <tr>
             <td>
+                @Html.ActionLink("Details", "Details", new { id = item.TeamID })
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.TeamName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TeamDivision)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.TeamID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.TeamID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.TeamID })
             </td>
         </tr>
     }

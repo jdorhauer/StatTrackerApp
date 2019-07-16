@@ -18,8 +18,23 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+@if (TempData.ContainsKey("SaveResult"))
+{
+    <div class="alert alert-success fade in" role="alert">
+
+        <button type="button" class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+        @TempData["SaveResult"]
+    </div>
+}
+
 <table class="table">
     <tr>
+        <th>
+            Game Details
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.TeamName)
         </th>
@@ -63,6 +78,9 @@
     {
         <tr>
             <td>
+                @Html.ActionLink("Display", "Details", new { id = item.TeamID, year = item.YearOfSeason, game = item.GameNumber })
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.TeamName)
             </td>
             <td>
@@ -97,11 +115,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.GoalsAgainst)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.TeamID, year = item.YearOfSeason, game = item.GameNumber }) |
-                @Html.ActionLink("Details", "Details", new { id = item.TeamID, year = item.YearOfSeason, game = item.GameNumber }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.TeamID, year = item.YearOfSeason, game = item.GameNumber })
             </td>
         </tr>
     }
