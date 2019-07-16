@@ -4,25 +4,57 @@
 
 @if (!User.Identity.IsAuthenticated)
 {
-    <div class="jumbotron">
-        <h1>StatTracker</h1>
-        <p class="lead">The StatTracker application exists to help coaches and scouts compile and view data for individual players or a team. It helps coaches to find opportunities for growth and areas of strength. Scouts can use it to discover trends in a player over time.</p>
-    </div>
+    <div class="notLoggedIn">
+        <div class="jumbotron">
+            <h1>StatTracker</h1>
+            <p class="lead">The StatTracker application exists to help coaches and scouts compile and view data for individual players or a team. It helps coaches to find opportunities for growth and areas of strength. Scouts can use it to discover trends in a player over time.</p>
+        </div>
 
-    <div class="row">
-        <div class="col-md-4">
-            <h2>Getting started</h2>
-            <p>
-                When you create an account, you have options to enter teams and players. You can then track common statistics for each. We are currently able to help track useful data for skaters, such as goals, assists, and shooting percentage. For teams, there are options to track information for power plays, penalty kills, goals for, goals against, wins and losses and more. Check out the "Updates In Progress" to see areas we are working and ideas we have to expand the capabilities of the application.
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h2></h2>
-            <p></p>
-        </div>
-        <div class="col-md-4">
-            <h2>Updates In Progress</h2>
-            <p>We are constantly working to improve our product. We have a few ideas that we are currently working on bringing to the project. We want to expand to include statistics that are more specific to defensive players or goaltenders. We are also working on a new look for the application. If you have any ideas, please feel free to reach out and share those at jddorhauer@gmail.com.</p>
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Getting started</h2>
+                <p>
+                    When you create an account, you have options to enter teams and players. You can then track common statistics for each. We are currently able to help track useful data for skaters, such as goals, assists, and shooting percentage. For teams, there are options to track information for power plays, penalty kills, goals for, goals against, wins and losses and more. Check out the "Updates In Progress" to see areas we are working and ideas we have to expand the capabilities of the application.
+                </p>
+            </div>
+            <div class="col-md-4">
+                <h2></h2>
+                <p></p>
+            </div>
+            <div class="col-md-4">
+                <h2>Updates In Progress</h2>
+                <p>We are constantly working to improve our product. We have a few ideas that we are currently working on bringing to the project. We want to expand to include statistics that are more specific to defensive players or goaltenders. We are also working on a new look for the application. If you have any ideas, please feel free to reach out and share those at jddorhauer@gmail.com.</p>
+            </div>
         </div>
     </div>
 }
+else
+{
+    <div class="inApp">
+        <p class="loggedIn">
+            Choose an option above to get started.
+        </p>
+    </div>
+}
+
+<style>
+    .jumbotron {
+        background-color: rgba(235, 240, 247, 0.66);
+    }
+
+    .notLoggedIn {
+        color: #0f0f0f;
+    }
+
+    .loggedIn {
+        margin-top: 25%;
+        margin-bottom: 25%;
+        text-align: center;
+        color: #0f0f0f;
+    }
+
+    button{
+        text-decoration: none;
+        margin: .5em;
+    }
+</style>

@@ -1,6 +1,11 @@
 ﻿body {
+    background-color: #DCEFEA;
     padding-top: 50px;
     padding-bottom: 20px;
+}
+
+.navbar-inverse {
+    background-color: #030432;
 }
 
 /* Set padding to keep content from hitting the edges */
