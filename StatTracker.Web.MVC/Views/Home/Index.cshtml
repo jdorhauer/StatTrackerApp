@@ -33,25 +33,51 @@
 else
 {
     <div class="inApp">
-        <div class="row">
-            <div class="col-md-4">
-                <h2></h2>
-                <p>
-                   
-                </p>
+        <div class="home">
+            <div id="outerNews" class="col-md-6">
+                <div id="news" class="col-md-8">
+                    <h2>News Around Hockey</h2>
+                    <p>
+                        <a href="https://www.nhl.com/news" target="blank">NHL News</a>
+
+                        <hr>
+
+                        <a href="https://www.nwhl.zone/page/show/2748687-news" target="blank">NWHL News</a>
+
+                        <hr>
+
+                        <a href="https://www.collegehockeynews.com/" target="blank">College Hockey News</a>
+                    </p>
+                </div>
             </div>
-            <div class="col-md-4">
-                <h2></h2>
-                <p>
-                    
-                </p>
+            <div id="newsImg" class="col-md-6">
+                <img src="~/Content/Assets/news.jpg" />
             </div>
-            <div class="col-md-4">
+            <div id="recommendedImg" class="col-md-6">
+                <img src="~/Content/Assets/coaching.jpg" />
+            </div>
+            <div id="outerRec" class="col-md-6">
+                <div id="recommended" class="col-md-10">
+                    <h2>Recommended Products</h2>
+                    <p>
+                        <a href="https://www.hockeymonkey.com/accessories/otheraccessories/coaching-aids.html" target="blank">Hockey Monkey</a>
+
+                        <hr />
+
+                        <a href="https://www.hockeyshot.com/On-Ice-Coaching-Aids-s/132.htm" target="blank">Hockey Shot</a>
+
+                        <hr />
+
+                        <a href="https://www.purehockey.com/c/hockey-accessories-referee-coach?utm_medium=referral&utm_source=hockeygiant.com" target="blank">Pure Hockey</a>
+                    </p>
+                </div>
+            </div>
+            @*<div class="col-md-6">
                 <h2></h2>
                 <p>
 
                 </p>
-            </div>
+            </div>*@
         </div>
     </div>
 }
@@ -67,8 +93,47 @@ else
         background-color: rgba(235, 240, 247, 0.65);
     }
 
-    .row{
+    .row {
         background-color: rgba(235, 240, 247, 0.55);
+    }
+
+    .inApp {
+        margin-top: 10%;
+    }
+
+    #news {
+        background-color: rgba(235, 240, 247, 0.70);
+        text-align: center;
+        margin-left: 8%;
+    }
+
+    #outerNews {
+        text-align: center;
+    }
+
+    #newsImg {
+        margin-top: 2%;
+        margin-bottom: 2%;
+        margin-left: -4%;
+        margin-right: 4%;
+        text-align: center;
+    }
+
+    #recommendedImg {
+        text-align: center;
+        margin-top: 6%;
+        margin-left: -3%;
+        margin-right: 3%;
+    }
+
+    #recommended {
+        background-color: rgba(235, 240, 247, 0.70);
+        text-align: center;
+        margin-top: 10%;
+    }
+
+    #outerRec {
+        text-align: center;
     }
 
     .notLoggedIn {
