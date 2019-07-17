@@ -3,38 +3,36 @@
 @{
     ViewBag.Title = "Index";
 }
+<div class="correctionToTable">
+    <h2>Team Stats</h2>
+    <p>
+        @using (Html.BeginForm("Index", "TeamStat", FormMethod.Get))
+        {
+            <b>Search Team: </b>
+            @Html.DropDownList("TeamID", null, string.Empty, htmlAttributes: new { @class = "form-control" }) <br />
 
-<h2>Team Stats</h2>
-<p>
-    @using (Html.BeginForm("Index", "TeamStat", FormMethod.Get))
+            <b>Search Season: </b> <br />
+            @Html.TextBox("YearOfSeason") <br /> <br /> <input type="submit" value="Search" /><br /> <br />
+        }
+    </p>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+
+    @if (TempData.ContainsKey("SaveResult"))
     {
-        <b>Search Team: </b>
-        @Html.DropDownList("TeamID", null, string.Empty, htmlAttributes: new { @class = "form-control" }) <br />
+        <div class="alert alert-success fade in" role="alert">
 
-        <b>Search Season: </b> <br />
-        @Html.TextBox("YearOfSeason") <br /> <br /> <input type="submit" value="Search" /><br /> <br />
+            <button type="button" class="close" data-dismiss="alert">
+                <span>&times;</span>
+            </button>
+            @TempData["SaveResult"]
+        </div>
     }
-</p>
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-
-@if (TempData.ContainsKey("SaveResult"))
-{
-    <div class="alert alert-success fade in" role="alert">
-
-        <button type="button" class="close" data-dismiss="alert">
-            <span>&times;</span>
-        </button>
-        @TempData["SaveResult"]
-    </div>
-}
+</div>
 
 <table class="table">
     <tr>
-        <th>
-            Game Details
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.TeamName)
         </th>
@@ -78,9 +76,6 @@
     {
         <tr>
             <td>
-                @Html.ActionLink("Display", "Details", new { id = item.TeamID, year = item.YearOfSeason, game = item.GameNumber })
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.TeamName)
             </td>
             <td>
@@ -116,7 +111,28 @@
             <td>
                 @Html.DisplayFor(modelItem => item.GoalsAgainst)
             </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.TeamID, year = item.YearOfSeason, game = item.GameNumber }) |
+                @Html.ActionLink("Details", "Details", new { id = item.TeamID, year = item.YearOfSeason, game = item.GameNumber }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.TeamID, year = item.YearOfSeason, game = item.GameNumber })
+            </td>
         </tr>
     }
 
 </table>
+
+<style>
+    .table {
+        width: 95em;
+        text-align: center;
+        margin-left: -7%;
+    }
+
+    th {
+        text-align: center;
+    }
+
+    .correctionToTable {
+        margin-left: -7%;
+    }
+</style>

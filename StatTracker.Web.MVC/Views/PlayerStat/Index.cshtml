@@ -37,9 +37,6 @@
 <table class="table">
     <tr>
         <th>
-            Game Details
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.TeamName)
         </th>
         <th>
@@ -63,14 +60,12 @@
         <th>
             @Html.DisplayNameFor(model => model.ShootingPercentage)
         </th>
+        <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
-            <td>
-                @Html.ActionLink("Display", "Details", new { id = item.PlayerID, year = item.YearOfSeason, game = item.GameNumber })
-            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TeamName)
             </td>
@@ -95,7 +90,22 @@
             <td>
                 @Html.DisplayFor(modelItem => item.ShootingPercentage)
             </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.PlayerID, year = item.YearOfSeason, game = item.GameNumber }) |
+                @Html.ActionLink("Details", "Details", new { id = item.PlayerID, year = item.YearOfSeason, game = item.GameNumber }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.PlayerID, year = item.YearOfSeason, game = item.GameNumber })
+            </td>
         </tr>
     }
 
 </table>
+
+<style>
+    .table {
+        text-align: center;
+    }
+
+    th {
+        text-align: center;
+    }
+</style>

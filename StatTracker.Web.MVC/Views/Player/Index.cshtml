@@ -31,9 +31,6 @@
 <table class="table">
     <tr>
         <th>
-            Player Details
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.TeamName)
         </th>
         <th>
@@ -49,9 +46,6 @@
     {
         <tr>
             <td>
-                @Html.ActionLink("Details", "Details", new { id = item.PlayerID })
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.TeamName)
             </td>
             <td>
@@ -60,7 +54,22 @@
             <td>
                 @Html.DisplayFor(modelItem => item.PlayerPosition)
             </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.PlayerID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.PlayerID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.PlayerID })
+            </td>
         </tr>
     }
 
 </table>
+
+<style>
+    .table {
+        text-align: center;
+    }
+
+    th {
+        text-align: center;
+    }
+</style>
