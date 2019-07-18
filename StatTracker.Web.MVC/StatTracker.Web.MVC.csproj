@@ -265,6 +265,7 @@
     <Content Include="Views\TeamStat\Edit.cshtml" />
     <Content Include="Views\TeamStat\Delete.cshtml" />
     <Content Include="Views\TeamStat\Index.cshtml" />
+    <Content Include="Views\PlayerStat\View.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
