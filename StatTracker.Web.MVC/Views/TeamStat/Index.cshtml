@@ -32,7 +32,6 @@
 </div>
 
 <table id="teamStatsTable" class="table">
-    <thead>
         <tr>
             <th class="th-sm">
                 @Html.DisplayNameFor(model => model.TeamName)
@@ -72,9 +71,7 @@
             </th>
             <th></th>
         </tr>
-    </thead>
 
-    <tbody>
         @foreach (var item in Model)
         {
             <tr>
@@ -121,7 +118,6 @@
                 </td>
             </tr>
         }
-    </tbody>
 </table>
 
 <style>
