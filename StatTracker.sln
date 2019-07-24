@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StatTracker.Models", "StatT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StatTracker.Services", "StatTracker.Services\StatTracker.Services.csproj", "{B3F43671-3141-4487-8702-EA2C87A5A22D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StatTracker.WebAPI", "StatTracker.WebAPI\StatTracker.WebAPI.csproj", "{0097B994-7751-4EEF-8594-EE6A72A9C6DB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{B3F43671-3141-4487-8702-EA2C87A5A22D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3F43671-3141-4487-8702-EA2C87A5A22D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B3F43671-3141-4487-8702-EA2C87A5A22D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0097B994-7751-4EEF-8594-EE6A72A9C6DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0097B994-7751-4EEF-8594-EE6A72A9C6DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0097B994-7751-4EEF-8594-EE6A72A9C6DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0097B994-7751-4EEF-8594-EE6A72A9C6DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

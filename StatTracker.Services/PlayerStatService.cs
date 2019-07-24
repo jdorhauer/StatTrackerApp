@@ -2,6 +2,7 @@
 using StatTracker.Models.PlayerStatModels;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -112,7 +113,7 @@ namespace StatTracker.Services
             using (var db = new ApplicationDbContext())
             {
                 db.PlayerStats.Add(playerStats);
-                return db.SaveChanges() == 1;
+                    return db.SaveChanges() == 1;
             }
         }
 
