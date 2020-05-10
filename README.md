@@ -4,6 +4,8 @@
 
 This application that is to help hockey coaches to keep track of player statistics over time. It can also sort data on the pages. Currently, it is set up to track common statistics for forwards. In the future, I plan to expand the capabilities of this application and add the ability to track more information for defensive players and goalies.
 
+It was built as my individual project during my time at [Eleven Fifty Academy](https://elevenfifty.org/). Check out their programs!
+
 ## Frameworks and Techniques
 
 This application was built using the ASP.NET Framework and an MVC architecture. This is a CRUD app.
