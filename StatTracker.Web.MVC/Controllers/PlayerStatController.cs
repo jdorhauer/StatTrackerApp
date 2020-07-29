@@ -45,6 +45,7 @@ namespace StatTracker.Web.MVC.Controllers
             }
         }
 
+        // Create Service
         private PlayerStatService CreatePlayerStatService()
         {
             var userID = Guid.Parse(User.Identity.GetUserId());
